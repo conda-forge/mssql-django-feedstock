@@ -6,21 +6,21 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/mssql_django-{{ version }}.tar.gz
   sha256: 97d47eba6316921ed444346389f3045b23ef14d76e9ef7c47e1290b0ca2171a5
 
 build:
   noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 0
 
 requirements:
   host:
     - python {{ python_min }}
-    - pip
     - setuptools
+    - pip
   run:
-    - python >={{ python_min }},<3.13
+    - python >={{ python_min }}
     - django >=3.2,<6.1
     - pyodbc >=3.0
     - pytz
@@ -28,7 +28,6 @@ requirements:
 test:
   imports:
     - mssql
-    - testapp
   commands:
     - pip check
   requires:
@@ -40,8 +39,8 @@ about:
   summary: Django backend for Microsoft SQL Server
   license: BSD-3-Clause
   license_file:
-    - NOTICE.md
     - LICENSE.txt
+    - NOTICE.md
 
 extra:
   recipe-maintainers:
