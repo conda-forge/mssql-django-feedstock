@@ -1,5 +1,5 @@
 {% set name = "mssql-django" %}
-{% set version = "1.7.2" %}
+{% set version = "1.7.3" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/mssql_django-{{ version }}.tar.gz
-  sha256: 8bb18ac2da4467eae683e26ece257decdd0a20394a40bf86c0cb07819a678497
+  sha256: 00b22ea619bc146a15ffe33d5397a861cb7a9b9312c2e058dfd0781b8fe70007
 
 build:
   noarch: python
